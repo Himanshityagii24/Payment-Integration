@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+
 const { Schema } = mongoose;
 
 const PaymentSchema = new Schema({
@@ -16,7 +17,7 @@ const PaymentSchema = new Schema({
     },
     date: {
         type: Date,
-        default: Date.now,
+        default: Date.now
     },
 });
 

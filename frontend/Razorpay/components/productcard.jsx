@@ -1,4 +1,5 @@
-/* eslint-disable no-unused-vars */
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import {
     Card,
     CardHeader,
@@ -7,14 +8,14 @@ import {
     Typography,
     Button,
 } from "@material-tailwind/react";
-import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
 
 export default function ProductCard() {
-    const [amount, setamount] = useState(350);
+    const [amountPlan1, setAmountPlan1] = useState(299);
+    const [amountPlan2, setAmountPlan2] = useState(399);
+    const [amountPlan3, setAmountPlan3] = useState(299);
 
     // handlePayment Function
-    const handlePayment = async () => {
+    const handlePayment = async (amount) => {
         try {
             const res = await fetch(`${import.meta.env.VITE_BACKEND_HOST_URL}/api/payment/order`, {
                 method: "POST",
@@ -85,36 +86,135 @@ export default function ProductCard() {
         rzp1.open();
     };
 
+
     return (
-        <Card className="mt-6 w-96 bg-[#222f3e] text-white">
-            {/* CardHeader */}
-            <CardHeader color="" className="relative h-96 bg-[#2C3A47]">
-                {/* Image  */}
-                <img
-                    src="https://th.bing.com/th?id=OIP.6sdyUL65Uzka0G2cq_CmlwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
-                    alt="card-image"
-                />
-            </CardHeader>
+        <>
+            {/* First Card */}
+            <Card className="mt-6 w-96 bg-[#222f3e] text-white mr-6">
+                {/* CardHeader */}
+                <CardHeader color="" className="relative h-96 bg-[#2C3A47]">
+                    {/* Image  */}
+                    <img
+                        src="https://th.bing.com/th?id=OIP.6sdyUL65Uzka0G2cq_CmlwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                        alt="card-image"
+                    />
+                </CardHeader>
 
-            {/* CardBody */}
-            <CardBody>
-                {/* Typography For Title */}
-                <Typography variant="h5" className="mb-2">
-                    My First Product
-                </Typography>
+                {/* CardBody */}
+                <CardBody>
+                    {/* Typography For Title */}
+                    <Typography variant="h5" className="mb-2">
+                        Plan 1 
+                    </Typography>
 
-                {/* Typography For Price  */}
-                <Typography>
-                    ₹350 <span className=" line-through">₹699</span>
-                </Typography>
-            </CardBody>
+                    {/* Typography For Price  */}
+                    <Typography>
+                       299 <span className=" line-through">₹399</span>
+                    </Typography>
+                    <Typography>
+                      <ul>
+                       <li>
+                        1.feature1
+                       </li>
+                       <li>
+                        2.Feature2
+                       </li>
+                      </ul>
+                    </Typography>
+                </CardBody>
 
-            {/* CardFooter  */}
-            <CardFooter className="pt-0">
-                {/* Buy Now Button  */}
-                <Button onClick={handlePayment} className="w-full bg-[#1B9CFC]">Buy Now</Button>
-                <Toaster />
-            </CardFooter>
-        </Card>
+                {/* CardFooter  */}
+                <CardFooter className="pt-0">
+                    {/* Buy Now Button  */}
+                    <Button onClick={() => handlePayment(amountPlan1)} className="w-full bg-[#1B9CFC]">Buy Now</Button>
+                    <Toaster />
+                </CardFooter>
+            </Card>
+
+            {/* Second Card */}
+            <Card className="mt-6 w-96 bg-[#222f3e] text-white mr-6">
+                {/* CardHeader */}
+                <CardHeader color="" className="relative h-96 bg-[#2C3A47]">
+                    {/* Image  */}
+                    <img
+                        src="https://th.bing.com/th?id=OIP.6sdyUL65Uzka0G2cq_CmlwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                        alt="card-image"
+                    />
+                </CardHeader>
+
+                {/* CardBody */}
+                <CardBody>
+                    {/* Typography For Title */}
+                    <Typography variant="h5" className="mb-2">
+                       Plan 2
+                    </Typography>
+
+                    {/* Typography For Price  */}
+                    <Typography>
+                        399 <span className=" line-through">₹499</span>
+                    </Typography>
+                    <Typography>
+                      <ul>
+                       <li>
+                        1.feature1
+                       </li>
+                       <li>
+                        2.Feature2
+                       </li>
+                      </ul>
+                    </Typography>
+                </CardBody>
+
+                {/* CardFooter  */}
+                <CardFooter className="pt-0">
+                    {/* Buy Now Button  */}
+                    <Button onClick={() => handlePayment(amountPlan2)} className="w-full bg-[#1B9CFC]">Buy Now</Button>
+                    <Toaster />
+                </CardFooter>
+            </Card>
+
+            {/* Third Card */}
+            <Card className="mt-6 w-96 bg-[#222f3e] text-white">
+                {/* CardHeader */}
+                <CardHeader color="" className="relative h-96 bg-[#2C3A47]">
+                    {/* Image  */}
+                    <img
+                        src="https://th.bing.com/th?id=OIP.6sdyUL65Uzka0G2cq_CmlwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                        alt="card-image"
+                    />
+                </CardHeader>
+
+                {/* CardBody */}
+                <CardBody>
+                    {/* Typography For Title */}
+                    <Typography variant="h5" className="mb-2">
+                        Plan 3
+                        
+                    </Typography>
+
+                    {/* Typography For Price  */}
+                    <Typography>
+                        599 <span className=" line-through">₹699</span>
+                    </Typography>
+                    <Typography>
+                      <ul>
+                       <li>
+                        1.feature1
+                       </li>
+                       <li>
+                        2.Feature2
+                       </li>
+                      </ul>
+                    </Typography>
+                </CardBody>
+
+                {/* CardFooter  */}
+                <CardFooter className="pt-0">
+                    {/* Buy Now Button  */}
+                    <Button onClick={() => handlePayment(amountPlan3)} className="w-full bg-[#1B9CFC]">Buy Now</Button>
+                    <Toaster />
+                </CardFooter>
+            </Card>
+        </>
     );
 }
